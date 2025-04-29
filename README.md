@@ -32,8 +32,6 @@ User Experience
 
 Responsive design (works on all devices)
 
-Dark mode support
-
 Form validation
 
 Loading indicators
