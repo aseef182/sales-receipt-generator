@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Receipt Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <h1>Sales Receipt Generator</h1>
+
+    <div id="alert" class="alert"></div>
+
+    <div class="container">
+        <div class="input-section">
+            <div class="form-section">
+                <h3 class="form-section-title"><i class="fas fa-store"></i> Business Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="store-name">Name</label>
+                        <input type="text" id="store-name" placeholder="Enter business name" value="My Shop">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="store-address">Address</label>
+                        <input type="text" id="store-address" placeholder="Enter address" value="123 Main Street, City">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="store-phone">Phone</label>
+                        <input type="text" id="store-phone" placeholder="Enter phone number" value="(123) 456-7890">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="store-logo">Logo (Optional)</label>
+                        <input type="file" id="store-logo" accept="image/*">
+                        <img id="logo-preview" class="logo-preview" alt="Logo preview">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 class="form-section-title"><i class="fas fa-user"></i> Customer Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customer-name">Customer Name</label>
+                        <input type="text" id="customer-name" placeholder="Enter customer name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-contact">Customer Contact (Optional)</label>
+                        <input type="text" id="customer-contact" placeholder="Phone or email">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 class="form-section-title"><i class="fas fa-shopping-cart"></i> Items</h3>
+                <div id="item-list">
+                    <!-- Items will be added here dynamically -->
+                </div>
+
+                <button id="add-item" class="btn-success"><i class="fas fa-plus"></i> Add Item</button>
+            </div>
+
+            <div class="form-section">
+                <h3 class="form-section-title"><i class="fas fa-calculator"></i> Payment Details</h3>
+                <div class="form-group">
+                    <label for="discount">Discount Amount (₨)</label>
+                    <input type="number" id="discount" placeholder="0.00" min="0" step="0.01" value="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="receipt-notes">Notes (Optional)</label>
+                    <textarea id="receipt-notes" rows="2" placeholder="Add notes or special instructions"></textarea>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="generate-receipt"><i class="fas fa-image"></i> Generate Receipt Image</button>
+                <button id="print-receipt"><i class="fas fa-print"></i> Print Receipt</button>
+                <button id="clear-all" class="btn-danger"><i class="fas fa-trash"></i> Clear All</button>
+            </div>
+        </div>
+
+        <div class="receipt-section">
+            <h2><i class="fas fa-receipt"></i> Receipt Preview</h2>
+            <div class="receipt-container">
+                <div id="receipt" class="receipt">
+                    <div class="receipt-header">
+                        <img id="receipt-logo" class="receipt-logo" alt="Business logo">
+                        <div class="receipt-title" id="receipt-store-name">My Shop</div>
+                        <div id="receipt-address">123 Main Street, City</div>
+                        <div id="receipt-phone">Phone: (123) 456-7890</div>
+                    </div>
+
+                    <div class="receipt-info">
+                        <div class="receipt-date" id="receipt-date">Date: Loading...</div>
+                    </div>
+
+                    <div>Customer: <span id="receipt-customer">N/A</span></div>
+                    <div id="receipt-customer-contact-container" style="display: none;">Contact: <span
+                            id="receipt-customer-contact"></span></div>
+
+                    <table class="receipt-items">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="receipt-items-body">
+                            <!-- Items will be added here dynamically -->
+                        </tbody>
+                    </table>
+
+                    <div class="receipt-calculations">
+                        <div class="receipt-row">
+                            <span>Subtotal:</span>
+                            <span>₨<span id="subtotal">0.00</span></span>
+                        </div>
+                        <div class="receipt-row" id="discount-row" style="display: none;">
+                            <span>Discount:</span>
+                            <span>₨<span id="receipt-discount">0.00</span></span>
+                        </div>
+                        <div class="receipt-row receipt-total">
+                            <span>Total:</span>
+                            <span>₨<span id="total">0.00</span></span>
+                        </div>
+                    </div>
+
+                    <div id="receipt-notes-section" style="display: none; margin-top: 15px;">
+                        <div>Notes:</div>
+                        <div id="receipt-notes-content" style="font-style: italic;"></div>
+                    </div>
+
+                    <div class="receipt-footer">
+                        Thank you for your business!<br>
+                    </div>
+                </div>
+            </div>
+
+            <img id="generated-image" alt="Generated receipt image">
+
+            <div class="download-buttons" style="display: none;" id="download-buttons">
+                <button id="download-image" class="download-btn"><i class="fas fa-download"></i> Download as
+                    PNG</button>
+                <button id="download-pdf" class="download-btn"><i class="fas fa-file-pdf"></i> Download as PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
+
+</body>
+
+</html>
