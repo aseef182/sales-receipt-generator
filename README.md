@@ -1,62 +1,50 @@
-Project Overview
-This Sales Receipt Generator is a comprehensive web application that allows users to create professional sales receipts with business information, customer details, item lists, and payment calculations. The application features a clean, responsive interface with advanced functionality for generating, downloading, and printing receipts.
+# Sales Receipt Generator
 
-Key Features
-Business & Customer Information
+A comprehensive web application for generating professional sales receipts with business information, customer details, item lists, and payment calculations. The application offers a clean, responsive interface with advanced functionality for generating, downloading, and printing receipts.
 
-Store details (name, address, phone)
+## 🚀 Key Features
 
-Logo upload functionality
+### Business & Customer Information
+- Store details (name, address, phone)
+- Logo upload functionality
+- Customer information capture
 
-Customer information capture
+### Item Management
+- Dynamic item addition/removal
+- Quantity and price calculations
+- Automatic subtotal, discount, and total calculations
 
-Item Management
+### Receipt Generation
+- Real-time preview
+- Image generation (PNG)
+- PDF download capability (with jsPDF)
+- Direct printing functionality
 
-Dynamic item addition/removal
+### User Experience
+- Responsive design (works on all devices)
+- Form validation
+- Loading indicators
+- Alert notifications
 
-Quantity and price calculations
+### Advanced Features
+- HTML5 Canvas rendering
+- Print-specific styling
+- Accessibility enhancements
+- Performance optimizations
 
-Automatic subtotal, discount, and total calculations
+## 🛠 Technical Stack
 
-Receipt Generation
+**Frontend:**
+- HTML5
+- CSS3
+- JavaScript (ES6)
 
-Real-time preview
+**Libraries:**
+- html2canvas (for image generation)
+- jsPDF (for PDF generation)
+- Font Awesome (for icons)
 
-Image generation (PNG)
+**Storage:**
+- Client-side only (no backend required)
 
-PDF download capability (with jsPDF)
-
-Direct printing functionality
-
-User Experience
-
-Responsive design (works on all devices)
-
-Form validation
-
-Loading indicators
-
-Alert notifications
-
-Advanced Features
-
-HTML5 Canvas rendering
-
-Print-specific styling
-
-Accessibility enhancements
-
-Performance optimizations
-
-Technical Stack
-Frontend: HTML5, CSS3, JavaScript (ES6)
-
-Libraries:
-
-html2canvas (for image generation)
-
-jsPDF (for PDF generation)
-
-Font Awesome (for icons)
-
-Storage: Client-side only (no backend required)
+---
